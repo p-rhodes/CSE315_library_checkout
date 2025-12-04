@@ -1,0 +1,19 @@
+name: run_tests
+
+on:
+    push:
+        branches: [ main ] 
+    pull_request:
+
+
+jobs:
+    run-pytest-action:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: ./
+              with:
+                    src: python_checkout/tests/test_app.py
+                    args: ""
+
+

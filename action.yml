@@ -1,0 +1,18 @@
+name: "Library Actions"
+description: "Automatically run Rust and Python tests on Push"
+author: "Parker Rhodes"
+
+inputs:
+  args:
+    description: "Additional Library arguments"
+    required: false
+  src:
+    description: "Directories"
+    default: "."
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.13"
