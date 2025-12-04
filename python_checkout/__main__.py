@@ -1,3 +1,9 @@
+'''
+Made by Parker Rhodes
+CSE315
+
+Example main function to test 
+
 from checkout.items import Id, Book, Dvd
 from checkout.catalog import Catalog
 from checkout.member import Member
