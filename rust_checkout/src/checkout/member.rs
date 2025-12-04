@@ -26,6 +26,11 @@ impl Member {
             return;
         }
 
+        if self.current_ids.len() >= 5 {
+            println!("User <{}> has the maximum items borrowed!", self.name);
+            return;
+        }
+
         self.current_ids.push(id);
     }
 

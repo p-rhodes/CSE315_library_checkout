@@ -1,9 +1,11 @@
 //made by Parker Rhodes
 
 use crate::checkout::items::Item;
+use crate::checkout::items::Book;
+use crate::checkout::items::Dvd;
 
 pub struct Catalog {
-    items: Vec<Box<dyn Item>>,
+    pub items: Vec<Box<dyn Item>>,
 }
 
 impl Catalog {
@@ -14,7 +16,30 @@ impl Catalog {
     }
 
     pub fn add(&mut self, item: Box<dyn Item>) {
+        for i in 0..self.items.len() {
+            if self.items[i].get_id() == item.get_id() {
+               return;
+            }
+        }
+
+        if item.get_id().len() == 0 || item.get_name().len() == 0 {
+            println!("Invalid name or id!");
+            return;
+        }
+
         self.items.push(item);
+    }
+
+    pub fn get(&mut self, id: String) -> Box<dyn Item> {
+        let empty_item: Box<dyn Item>=Box::new(Book::new(String::from(""), String::from("")));
+
+        for i in 0..self.items.len() {
+            if self.items[i].get_id() == id {
+                return self.items.remove(i);
+            }
+        }
+
+        return empty_item;
     }
 
     pub fn details_for(&self, borrowed_ids: &Vec::<String>) -> Vec<(String, String, u8)> {
@@ -27,5 +52,11 @@ impl Catalog {
         }
 
         details
+    }
+
+    pub fn setup_sample(&mut self) {
+        self.add(Box::new(Book::new(String::from("B1"), String::from("Rust for Humans"))));
+        self.add(Box::new(Book::new(String::from("B2"), String::from("Pythonic Patterns"))));
+        self.add(Box::new(Dvd::new(String::from("D1"), String::from("Taking Flight"))));
     }
 }
