@@ -25,6 +25,11 @@ jobs:
               with:
                 toolchain: stable
 
+            - uses: ./
+              with:
+                  src: rust_checkout/Cargo.toml
+                  args: ""
+
             - name: run cargo test
               run: cargo test
           
