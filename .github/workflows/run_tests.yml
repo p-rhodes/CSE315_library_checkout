@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-    run-pytest-action:
+    run-pytests-action:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v6
@@ -16,4 +16,15 @@ jobs:
                     src: python_checkout/tests/test_app.py
                     args: ""
 
+    run-cargotest-action:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - name: Setup Rust
+              uses: actions-rs/toolchain@v1
+              with:
+                toolchain: stable
 
+            - name: run cargo test
+              run: cargo test
+          
