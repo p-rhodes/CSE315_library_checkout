@@ -27,3 +27,7 @@ class Book(Item):
 class Dvd(Item):
     def days_allowed(self) -> int: 
         return 7
+
+class Magazine(Item):
+    def days_allowed(self) -> int:
+        return 4
