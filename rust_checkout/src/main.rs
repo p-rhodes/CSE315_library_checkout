@@ -1,8 +1,7 @@
 //made by Parker Rhodes
 
 mod checkout;
-use checkout::items::Book;
-use checkout::items::Dvd;
+use checkout::items::{Book, Dvd, Magazine};
 use checkout::catalog::Catalog;
 use checkout::member::Member;
 
@@ -11,15 +10,16 @@ fn main() {
 
     cat.add(Box::new(Book::new(String::from("B1"), String::from("Rust for Humans"))));
     cat.add(Box::new(Book::new(String::from("B2"), String::from("Pythonic Patterns"))));
-    cat.add(Box::new(Book::new(String::from("D1"), String::from("Taking Flight"))));
-    cat.add(Box::new(Book::new(String::from("D2"), String::from("Patterns in Motion"))));
-    cat.add(Box::new(Dvd::new(String::from("C1"), String::from("Lord of the Flies"))));
+    cat.add(Box::new(Book::new(String::from("B3"), String::from("Taking Flight"))));
+    cat.add(Box::new(Book::new(String::from("B4"), String::from("Patterns in Motion"))));
+    cat.add(Box::new(Dvd::new(String::from("D1"), String::from("Lord of the Flies"))));
+    cat.add(Box::new(Magazine::new(String::from("M1"), String::from("Magic Code Mania"))));
 
     let mut clark=Member::new(String::from("Clark"));
     clark.borrow(String::from("B1"));
-    clark.borrow(String::from("B1")); //attempt to borrow twice to prove no duplicates
     clark.borrow(String::from("D1"));
-    clark.borrow(String::from("C1"));
+    clark.borrow(String::from("B2"));
+    clark.borrow(String::from("M1"));
 
     println!("{} has borrowed: {:?}", clark.name(), clark.borrowed_ids());
 

@@ -63,3 +63,33 @@ impl Item for Dvd {
         self.max_days
     }
 }
+
+pub struct Magazine {
+    id: String,
+    name: String,
+    max_days: u8
+}
+
+impl Magazine {
+    pub fn new(id: String, name: String) -> Self {
+        Self {
+            name: name,
+            id: id,
+            max_days: 14
+        }
+    }
+}
+
+impl Item for Magazine {
+    fn get_id(&self) -> String {
+        self.id.clone()
+    }
+
+    fn get_name(&self) -> String {
+        self.name.clone()
+    }
+
+    fn get_days(&self) -> u8 {
+        self.max_days
+    }
+}

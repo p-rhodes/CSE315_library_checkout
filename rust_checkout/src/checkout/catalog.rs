@@ -1,7 +1,10 @@
 //made by Parker Rhodes
 
 use crate::checkout::items::Item;
+
+#[cfg(test)]
 use crate::checkout::items::Book;
+#[cfg(test)]
 use crate::checkout::items::Dvd;
 
 pub struct Catalog {
@@ -30,6 +33,7 @@ impl Catalog {
         self.items.push(item);
     }
 
+    #[cfg(test)]
     pub fn get(&mut self, id: String) -> Box<dyn Item> {
         let empty_item: Box<dyn Item>=Box::new(Book::new(String::from(""), String::from("")));
 
@@ -54,6 +58,7 @@ impl Catalog {
         details
     }
 
+    #[cfg(test)]
     pub fn setup_sample(&mut self) {
         self.add(Box::new(Book::new(String::from("B1"), String::from("Rust for Humans"))));
         self.add(Box::new(Book::new(String::from("B2"), String::from("Pythonic Patterns"))));
