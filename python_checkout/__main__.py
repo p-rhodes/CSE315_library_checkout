@@ -7,7 +7,6 @@ def demo() -> None:
 
     cat.add(Book(Id("B1"), "Rust for Humans"))
     cat.add(Book(Id("B2"), "Pythonic Patterns"))
-
     cat.add(Dvd(Id("D1"), "Taking Flight"))
     cat.add(Dvd(Id("D2"), "Patterns in Motion"))
 
